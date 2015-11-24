@@ -623,8 +623,10 @@ var getScrollRoot = (function() {
       window.scrollBy(0, 1);
       if (document.body.scrollTop != bodyScrollTop)
         (SCROLL_ROOT = document.body);
-      else 
+      else if (document.documentElement.scrollTop != docElScrollTop)
         (SCROLL_ROOT = document.documentElement);
+      else
+        (SCROLL_ROOT = document.body);
       window.scrollBy(0, -1);
       document.body.removeChild(dummy);
     }
